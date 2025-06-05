@@ -8,6 +8,7 @@ use alumet::{
     pipeline, static_plugins,
 };
 
+use plugin_42::Example42Plugin;
 use plugin_csv::CsvPlugin;
 
 fn main() {
@@ -15,7 +16,7 @@ fn main() {
     init_logger();
 
     // Load the plugin metadata
-    let mut plugins = PluginSet::from(static_plugins![CsvPlugin]);
+    let mut plugins = PluginSet::from(static_plugins![CsvPlugin, Example42Plugin]);
 
     // Load the configuration file.
     let general = || toml::Table::new(); // no default general options
@@ -29,6 +30,10 @@ fn main() {
     plugins
         .extract_config(&mut config, true, UnknownPluginInConfigPolicy::Error)
         .expect("invalid plugins config");
+
+    // Enable the example plugin "42" manually.
+    // It is disabled by extract_config if it does not appear in the config, here's how to enable it by force.
+    plugins.set_plugin_enabled("example-42", true);
 
     // Set up the measurement pipeline
     let mut pipeline = pipeline::Builder::new();

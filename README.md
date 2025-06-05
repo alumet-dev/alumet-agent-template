@@ -2,9 +2,11 @@
 
 Example of a custom Alumet agent.
 
-## Key parts
+This is a Rust workspace managed by [Cargo](https://doc.rust-lang.org/cargo/).
+It contains two projects: `agent-example` and `plugin-42`.
 
-This is a Rust project managed by [Cargo](https://doc.rust-lang.org/cargo/).
+## Agent key parts
+
 It creates a binary app, defined in `src/main.rs`.
 
 - `Cargo.toml` declares a dependency on `alumet` (Alumet core), some Alumet plugins, and some third-party libraries.
@@ -26,5 +28,9 @@ To do that, we suggest you to have a look at [clap](https://docs.rs/clap/latest/
 4. Compile everything together with `cargo build`. The binary is generated in `target/`. Note that, by default, you are in `debug` (unoptimized) mode.
 
 Pro-tip: you can compile and run quickly with `cargo run`. To pass arguments to the Alumet agent, use `--`. For instance, `cargo run -- plugins list`.
+
+## Plugin key parts
+
+The plugin is a Rust library, whose main file is `lib.rs`.
 
 For more information on plugins, read the [Alumet Developer Book](https://alumet-dev.github.io/developer-book/).

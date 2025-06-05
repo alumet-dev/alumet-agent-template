@@ -1,0 +1,9 @@
+[package]
+name = "plugin-42"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# See comment in agent's Cargo.toml
+alumet = { git = "https://github.com/alumet-dev/alumet.git", rev = "fe6bf0e18e229dff4d420b992aa1e2ee83521dfb" }
+anyhow = "1.0.98"

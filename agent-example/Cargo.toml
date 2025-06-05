@@ -1,0 +1,23 @@
+[package]
+name = "agent-example"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+# Normally, you would use the Alumet crate published on crates.io, like this:
+#
+# alumet = "0.8.0"
+#
+# But here, we want to use the CSV plugin, which is not published (for the moment).
+# Since this plugin depends on the version of Alumet that is in the git repository,
+# we must use this version too.
+# If you don't need the plugins in the repo, don't use the git dependency.
+alumet = { git = "https://github.com/alumet-dev/alumet.git", rev = "fe6bf0e18e229dff4d420b992aa1e2ee83521dfb" }
+
+anyhow = "1.0.98"
+env_logger = "0.11.8"
+log = "0.4.27"
+plugin-42 = { version = "0.1.0", path = "../plugin-42" }
+plugin-csv = { git = "https://github.com/alumet-dev/alumet.git", rev = "fe6bf0e18e229dff4d420b992aa1e2ee83521dfb" }
+toml = "0.8.22"
